@@ -9,7 +9,8 @@ import 'firebase/firestore';
 import { pizzaProvider } from './../providers/pizza'
 import item from "../models/item";
 import {AdMobBanner, setTestDeviceIDAsync} from "expo-ads-admob";
-
+import { Notifications } from "expo";
+import * as Permissions from 'expo-permissions';
 
 
 export interface AppProps {navigation:any;}
@@ -33,8 +34,11 @@ export default class LoginScreen extends React.Component<AppProps, AppState> {
   
   public logar() {
       firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.senha)
-          .then(() => {
+          .then( async () => {
+              this.teste();
+              console.log(this.teste());
               this.props.navigation.navigate('cardapio');
+
           }).catch(erro => {
           ToastAndroid.show('Email ou senha incorreta', 3000);
       });
@@ -67,6 +71,16 @@ export default class LoginScreen extends React.Component<AppProps, AppState> {
 
     //this.verificaEmail();
   }
+public async teste() {
+    let permissao = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    if(permissao.status == 'granted') {
+        let token = await Notifications.getExpoPushTokenAsync();
+        firebase.firestore()
+            .collection('usuarios')
+            .doc(firebase.auth().currentUser.uid)
+            .set({'deviceID':token})
+    }
+  }
 
   public verificaEmail(){
     var re = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
@@ -97,7 +111,7 @@ export default class LoginScreen extends React.Component<AppProps, AppState> {
     return (<ImageBackground source={require('./../../assets/imgs/telapizzaria.jpg')}
                 style={styles.background}>
             <View style={styles.container}>
-                <Text style={styles.logo}>Pizza Hot</Text>
+                <Text style={styles.logo}>Rune Pizzas</Text>
 
                 <InputRound placeholder="Digite seu Email" icone="person" onChangeText={(email) => this.setState({email})}/>
                 <InputRound placeholder="Digite sua Senha" icone="lock"  onChangeText={(senha) => this.setState({senha})} isPassword />

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "839993800602",
+    "firebase_url": "https://pizzariamobile.firebaseio.com",
+    "project_id": "pizzariamobile",
+    "storage_bucket": "pizzariamobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839993800602:android:6ab27ff0d27fb1c31eac23",
+        "android_client_info": {
+          "package_name": "br.com.runepizza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839993800602-irrc9m5l444j0jnnofd1cqpn8vjlp1p5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHo4-i_ItfBS4oYl7u8gircUsD5RU8pro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839993800602-irrc9m5l444j0jnnofd1cqpn8vjlp1p5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

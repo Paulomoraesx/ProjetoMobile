@@ -25,6 +25,11 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "br.com.runepizza",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json"
     }
   }
 }
